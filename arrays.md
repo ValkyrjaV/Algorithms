@@ -9,6 +9,13 @@
 https://leetcode.com/problems/two-sum/
 
 ```python
+def twoSum(nums: List[int], target: int) -> List[int]:
+    hash = {}
+    for diff, value in enumerate(nums):
+        if (target - value) in hash:
+            return [hash[target - value], diff]
+        if value not in hash:
+            hash[value] = diff
 
 ```
 
