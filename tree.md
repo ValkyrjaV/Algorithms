@@ -33,6 +33,22 @@ https://leetcode.com/problems/symmetric-tree/
 https://leetcode.com/problems/maximum-depth-of-binary-tree/
 
 ```python
+def maxDepth(self, root: TreeNode) -> int:
+    if root is None:
+        return 0
+    queue = []
+    queue.append(root)
+    depth = 0
+    while queue:
+        l = len(queue)
+        for _ in range(l):
+            root = queue.pop(0)
+            if root.left:
+                queue.append(root.left)
+            if root.right:
+                queue.append(root.right)
+        depth += 1
+    return depth
 
 ```
 
