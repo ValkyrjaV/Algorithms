@@ -48,6 +48,16 @@ https://leetcode.com/problems/merge-two-sorted-lists/
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 
 ```python
+def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+    root = slow = fast = ListNode()
+    slow.next = head
+    while n >= 0 and fast:
+        fast = fast.next
+        n -= 1
+    while fast:
+        slow, fast = slow.next, fast.next
+    slow.next = slow.next.next if slow.next else None
+    return root.next
 
 ```
 
