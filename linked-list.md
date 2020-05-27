@@ -80,6 +80,18 @@ https://leetcode.com/problems/reorder-list/
 https://leetcode.com/problems/intersection-of-two-linked-lists/
 
 ```python
+def getIntersectionNode(self, headA, headB):
+    tail1, tail2 = headA, headB
+    while tail1 is not tail2:
+        if tail1:
+            tail1 = tail1.next
+        else:
+            tail1 = headB
+        if tail2:
+            tail2 = tail2.next
+        else:
+            tail2 = headA
+    return tail1
 
 ```
 
