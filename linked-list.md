@@ -88,5 +88,30 @@ https://leetcode.com/problems/intersection-of-two-linked-lists/
 https://leetcode.com/problems/sort-list/
 
 ```python
+def sortList(self, head: ListNode) -> ListNode:
+    def merge(l1, l2):
+        copy = ans = ListNode()
+        while l1 and l2:
+            if l1.val <= l2.val:
+                copy.next, l1 = l1, l1.next
+            else:
+                copy.next, l2 = l2, l2.next
+            copy = copy.next
+        copy.next = l1 or l2
+        return ans.next
+
+    def merge_sort(head):
+        if not head or not head.next:
+            return head
+        slow = fast = head
+        prev = None
+        while fast and fast.next:
+            prev, slow, fast = slow, slow.next, fast.next.next
+        prev.next = None
+        left = merge_sort(head)
+        right = merge_sort(slow)
+        return merge(left, right)
+
+    return merge_sort(head)
 
 ```
