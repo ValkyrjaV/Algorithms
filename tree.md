@@ -25,6 +25,19 @@ https://leetcode.com/problems/binary-tree-inorder-traversal/
 https://leetcode.com/problems/symmetric-tree/
 
 ```python
+def isSymmetric(self, root: 'TreeNode') -> 'bool':
+    stack = root and [(root.left, root.right)]
+    while stack:
+        rightnode, leftnode = stack.pop()
+        if not rightnode and not leftnode:
+            continue
+        if not rightnode or not leftnode:
+            return False
+        if rightnode.val != leftnode.val:
+            return False
+        stack.append((rightnode.left, leftnode.right))
+        stack.append((rightnode.right, leftnode.left))
+    return True
 
 ```
 
