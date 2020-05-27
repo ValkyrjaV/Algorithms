@@ -81,6 +81,19 @@ https://leetcode.com/problems/subtree-of-another-tree/
 https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 
 ```python
+def kthSmallest(self, root: TreeNode, k: int) -> int:
+    stack = []
+    result = [float("+infinity")]*k
+    while stack or root:
+        while root:
+            stack.append(root)
+            root = root.left
+        root = stack.pop()
+        if root.val < max(result):
+            result.sort()
+            result[k-1] = root.val
+        root = root.right
+    return result.pop()
 
 ```
 
