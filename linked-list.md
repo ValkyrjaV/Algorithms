@@ -16,14 +16,6 @@
 https://leetcode.com/problems/reverse-linked-list/
 
 ```python
-def reverseList(head):
-    prev = None
-    while head:
-        cur = head
-        head = head.next
-        cur.next = prev
-        prev = cur
-    return prev
 
 ```
 
@@ -32,11 +24,6 @@ def reverseList(head):
 https://leetcode.com/problems/middle-of-the-linked-list/
 
 ```python
-def middleNode(self, head: 'ListNode') -> 'ListNode':
-    fast = slow = head
-    while fast and fast.next:
-        slow, fast = slow.next, fast.next.next
-    return slow
 
 ```
 
