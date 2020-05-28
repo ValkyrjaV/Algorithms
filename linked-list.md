@@ -64,6 +64,15 @@ https://leetcode.com/problems/linked-list-cycle/
 https://leetcode.com/problems/linked-list-cycle-ii/
 
 ```python
+def detectCycle(self, head):
+    fast = slow = head
+    while fast and fast.next:
+        slow, fast = slow.next, fast.next.next
+        if slow is fast:
+            while head is not slow:
+                head, slow = head.next, slow.next
+            return head
+    return None
 
 ```
 
