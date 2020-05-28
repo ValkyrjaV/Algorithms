@@ -73,6 +73,24 @@ def hasPathSum(self, root: 'TreeNode', total: 'int') -> 'bool':
 https://leetcode.com/problems/binary-tree-level-order-traversal/
 
 ```python
+def levelOrder(self, root: TreeNode) -> List[List[int]]:
+    result = []
+    if root is None:
+        return result
+    queue = [root]
+    while queue:
+        level = []
+        qsize = len(queue)
+        for _ in range(qsize):
+            node = queue.pop(0)
+            if node is not None:
+                level.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+        result.append(level)
+    return result
 
 ```
 
