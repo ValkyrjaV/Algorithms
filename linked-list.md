@@ -24,6 +24,11 @@ https://leetcode.com/problems/reverse-linked-list/
 https://leetcode.com/problems/middle-of-the-linked-list/
 
 ```python
+def middleNode(self, head: 'ListNode') -> 'ListNode':
+    fast = slow = head
+    while fast and fast.next:
+        slow, fast = slow.next, fast.next.next
+    return slow
 
 ```
 
