@@ -73,6 +73,7 @@ https://leetcode.com/problems/binary-tree-level-order-traversal/
 https://leetcode.com/problems/subtree-of-another-tree/
 
 ```python
+# Solution №1
 def isSubtree(self, s: 'TreeNode', t: 'TreeNode') -> 'bool':
 
     def is_same(s, t):
@@ -91,6 +92,20 @@ def isSubtree(self, s: 'TreeNode', t: 'TreeNode') -> 'bool':
             stack.append(node.right)
             stack.append(node.left)
     return False
+
+# Solution №2
+def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+    if s and t:
+        return self.is_same(s, t) or self.isSubtree(s.left, t) or \
+            self.isSubtree(s.right, t)
+    return s is t
+
+
+def is_same(self, s: TreeNode, t: TreeNode) -> bool:
+    if s and t:
+        return s.val == t.val and self.is_same(s.left, t.left) and \
+            self.is_same(s.right, t.right)
+    return s is t
 
 ```
 
