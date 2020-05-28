@@ -19,12 +19,12 @@ https://leetcode.com/problems/merge-intervals/
 ```python
 def merge(self, intervals: List[List[int]]) -> List[List[int]]:
     ans = []
-    sort = sorted(intervals, key=lambda x: x[0])
-    for i in sort:
-        if ans and i[0] <= ans[-1][1]:
-            ans[-1][1] = max(ans[-1][1], i[1])
+    sort_interval = sorted(intervals, key=lambda x: x[0])
+    for interval in sort_interval:
+        if ans and interval[0] <= ans[-1][1]:
+            ans[-1][1] = max(ans[-1][1], interval[1])
         else:
-            ans += i,
+            ans += [interval]
     return ans
 
 ```
