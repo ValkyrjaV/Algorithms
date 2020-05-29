@@ -17,7 +17,7 @@ def insert(self, intervals, newInterval):
     for elem in intervals: 
         if elem[1] < mid[0]: 
             left.append(elem)
-        elif interv[0] > mid[1]: 
+        elif elem[0] > mid[1]: 
             right.append(elem)
         else: 
             mid[0] = min(elem[0], mid[0])
