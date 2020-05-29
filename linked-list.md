@@ -81,17 +81,17 @@ https://leetcode.com/problems/intersection-of-two-linked-lists/
 
 ```python
 def getIntersectionNode(self, headA, headB):
-    tail1, tail2 = headA, headB
-    while tail1 is not tail2:
-        if tail1:
-            tail1 = tail1.next
+    pointerA, pointerB = headA, headB
+    while pointerA is not pointerB:
+        if pointerA:
+            pointerA = pointerA.next
         else:
-            tail1 = headB
-        if tail2:
-            tail2 = tail2.next
+            pointerA = headB
+        if pointerB:
+            pointerB = pointerB.next
         else:
-            tail2 = headA
-    return tail1
+            pointerB = headA
+    return pointerA
 
 ```
 
