@@ -26,7 +26,9 @@ https://leetcode.com/problems/symmetric-tree/
 
 ```python
 def isSymmetric(self, root: 'TreeNode') -> 'bool':
-    stack = root and [(root.left, root.right)]
+    if root is None:
+        return True
+    stack = [(root.left, root.right)]
     while stack:
         rightnode, leftnode = stack.pop()
         if not rightnode and not leftnode:
