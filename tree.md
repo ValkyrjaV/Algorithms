@@ -100,7 +100,6 @@ https://leetcode.com/problems/binary-search-tree-iterator/
 class BSTIterator:
     def __init__(self, root: TreeNode):
         self.nodes = []
-        self.index = -1
         self.traverse(root)
 
     def traverse(self, root):
@@ -111,10 +110,9 @@ class BSTIterator:
         self.traverse(root.right)
 
     def next(self) -> int:
-        self.index += 1
-        return self.nodes[self.index]
+        return self.nodes.pop(0)
 
     def hasNext(self) -> bool:
-        return self.index < len(self.nodes) - 1
+        return self.nodes
 
 ```
