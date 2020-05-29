@@ -101,14 +101,14 @@ class BSTIterator:
     def __init__(self, root: TreeNode):
         self.nodes = []
         self.index = -1
-        self.sorting(root)
+        self.traverse(root)
 
-    def sorting(self, root):
+    def traverse(self, root):
         if not root:
             return
-        self.sorting(root.left)
+        self.traverse(root.left)
         self.nodes.append(root.val)
-        self.sorting(root.right)
+        self.traverse(root.right)
 
     def next(self) -> int:
         self.index += 1
