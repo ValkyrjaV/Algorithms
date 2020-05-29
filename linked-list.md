@@ -72,6 +72,7 @@ https://leetcode.com/problems/linked-list-cycle-ii/
 https://leetcode.com/problems/reorder-list/
 
 ```python
+# Solution №1
 def reorderList(self, head: ListNode) -> None:
     queue = []
     cur = head
@@ -88,6 +89,29 @@ def reorderList(self, head: ListNode) -> None:
             reverse = queue.pop()
             reverse.next = None
             node.next = reverse
+            
+# Solution №2
+def reorderList(self, head: ListNode) -> None:
+    if head is None:
+        return
+
+    fast = slow = head
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+
+    reverse = None
+    while slow:
+        node = slow.next
+        slow.next = reverse
+        reverse, slow = slow, node
+
+    start = head
+    while reverse.next:
+        tmp, start.next = start.next, reverse
+        start, tmp = tmp, reverse.next
+        reverse.next = start
+        reverse = tmp
 
 ```
 
