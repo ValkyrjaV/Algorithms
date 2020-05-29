@@ -16,13 +16,14 @@
 https://leetcode.com/problems/reverse-linked-list/
 
 ```python
-def reverseList(head):
+def reverseList(self, head: ListNode) -> ListNode:
     prev = None
-    while head:
-        cur = head
-        head = head.next
+    cur = head
+    while cur:
+        node = cur.next
         cur.next = prev
-        prev = cur
+        prev, cur = cur, node
+    self.cur = prev
     return prev
 
 ```
