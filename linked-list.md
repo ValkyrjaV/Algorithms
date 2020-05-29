@@ -89,7 +89,7 @@ https://leetcode.com/problems/sort-list/
 
 ```python
 def sortList(self, head: ListNode) -> ListNode:
-    def merge(l1, l2):
+    def merge(l1: ListNode, l2: ListNode) -> ListNode:
         copy = ans = ListNode()
         while l1 and l2:
             if l1.val <= l2.val:
@@ -97,10 +97,13 @@ def sortList(self, head: ListNode) -> ListNode:
             else:
                 copy.next, l2 = l2, l2.next
             copy = copy.next
-        copy.next = l1 or l2
+        if l1:
+            copy.next = l1
+        else:
+            copy.next = l2
         return ans.next
 
-    def merge_sort(head):
+    def merge_sort(head: ListNode) -> ListNode:
         if not head or not head.next:
             return head
         slow = fast = head
@@ -111,7 +114,6 @@ def sortList(self, head: ListNode) -> ListNode:
         left = merge_sort(head)
         right = merge_sort(slow)
         return merge(left, right)
-
     return merge_sort(head)
 
 ```
