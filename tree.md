@@ -139,6 +139,39 @@ def levelOrder(self, root: TreeNode) -> List[List[int]]:
 https://leetcode.com/problems/subtree-of-another-tree/
 
 ```python
+# Solution №1
+def isSubtree(self, s: 'TreeNode', t: 'TreeNode') -> 'bool':
+
+    def is_same(s, t):
+        if s and t:
+            return s.val == t.val and is_same(s.left, t.left) and \
+                is_same(s.right, t.right)
+        else:
+            return s is t
+
+    stack = s and [s]
+    while stack:
+        node = stack.pop()
+        if node:
+            if is_same(node, t):
+                return True
+            stack.append(node.right)
+            stack.append(node.left)
+    return False
+
+# Solution №2
+def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
+    if s and t:
+        return self.is_same(s, t) or self.isSubtree(s.left, t) or \
+            self.isSubtree(s.right, t)
+    return s is t
+
+
+def is_same(self, s: TreeNode, t: TreeNode) -> bool:
+    if s and t:
+        return s.val == t.val and self.is_same(s.left, t.left) and \
+            self.is_same(s.right, t.right)
+    return s is t
 
 ```
 
