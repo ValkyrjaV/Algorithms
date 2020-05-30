@@ -114,6 +114,18 @@ https://leetcode.com/problems/reorder-list/
 https://leetcode.com/problems/intersection-of-two-linked-lists/
 
 ```python
+def getIntersectionNode(self, headA, headB):
+    pointerA, pointerB = headA, headB
+    while pointerA is not pointerB:
+        if pointerA:
+            pointerA = pointerA.next
+        else:
+            pointerA = headB
+        if pointerB:
+            pointerB = pointerB.next
+        else:
+            pointerB = headA
+    return pointerA
 
 ```
 
