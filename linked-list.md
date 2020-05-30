@@ -23,7 +23,6 @@ def reverseList(self, head: ListNode) -> ListNode:
         node = cur.next
         cur.next = prev
         prev, cur = cur, node
-    self.cur = prev
     return prev
 
 ```
