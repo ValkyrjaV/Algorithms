@@ -105,6 +105,20 @@ def flattening(self, root: TreeNode) -> List[int]:
 def kthSmallest(self, root: TreeNode, k: int) -> int:
     flattree = self.flattening(root)
     return flattree[k - 1]
+    
+# Solution №3
+def kthSmallest(self, root: TreeNode, k: int) -> int:
+    stack = []
+    curNode = root
+    while curNode or stack:
+        while curNode:
+            stack.append(curNode)
+            curNode = curNode.left
+        curNode = stack.pop()
+        k -= 1
+        if k == 0:
+            return curNode.val
+        curNode = curNode.right
 
 ```
 
