@@ -202,6 +202,44 @@ def is_same(self, s: TreeNode, t: TreeNode) -> bool:
 https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 
 ```python
+# Solution №1
+def kthSmallest(self, root: TreeNode, k: int) -> int:
+    stack = []
+    result = [float("+infinity")]*k
+    while stack or root:
+        while root:
+            stack.append(root)
+            root = root.left
+        root = stack.pop()
+        if root.val < max(result):
+            result.sort()
+            result[k-1] = root.val
+        root = root.right
+    return result.pop()
+
+# Solution №2
+def flattening(self, root: TreeNode) -> List[int]:
+    if root:
+        return self.flattening(root.left) + [root.val] + self.flattening(root.right)
+    return []
+
+def kthSmallest(self, root: TreeNode, k: int) -> int:
+    flattree = self.flattening(root)
+    return flattree[k - 1]
+    
+# Solution №3
+def kthSmallest(self, root: TreeNode, k: int) -> int:
+    stack = []
+    curNode = root
+    while curNode or stack:
+        while curNode:
+            stack.append(curNode)
+            curNode = curNode.left
+        curNode = stack.pop()
+        k -= 1
+        if k == 0:
+            return curNode.val
+        curNode = curNode.right
 
 ```
 
