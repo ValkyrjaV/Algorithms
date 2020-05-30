@@ -104,6 +104,13 @@ def isSameTree(self, p: 'TreeNode', q: 'TreeNode') -> 'bool':
 https://leetcode.com/problems/invert-binary-tree/
 
 ```python
+def invertTree(self, root: TreeNode) -> TreeNode:
+    if root is None:
+        return root
+    root.right, root.left = root.left, root.right
+    self.invertTree(root.right)
+    self.invertTree(root.left)
+    return root
 
 ```
 
