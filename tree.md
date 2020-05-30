@@ -211,5 +211,22 @@ https://leetcode.com/problems/validate-binary-search-tree/
 https://leetcode.com/problems/binary-search-tree-iterator/
 
 ```python
+class BSTIterator:
+    def __init__(self, root: TreeNode):
+        self.nodes = []
+        self.traverse(root)
+
+    def traverse(self, root):
+        if not root:
+            return
+        self.traverse(root.left)
+        self.nodes.append(root.val)
+        self.traverse(root.right)
+
+    def next(self) -> int:
+        return self.nodes.pop(0)
+
+    def hasNext(self) -> bool:
+        return self.nodes
 
 ```
